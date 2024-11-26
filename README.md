@@ -81,16 +81,16 @@ If you use this package in your research, please cite:
 
 ```
 @misc{WaveQTE,
-  author = {Your Name},
+  author = {Avishek Bhandari},
   title = {WaveQTE: Wavelet-based Quantile Transfer Entropy Analysis},
   year = {2024},
   publisher = {GitHub},
   journal = {GitHub repository},
-  url = {https://github.com/username/WaveQTE}
+  url = {https://github.com/avishekb9/WaveQTE}
 }
 ```
 
 ## Contact
 
 - Create an issue on GitHub
-- Email: your.email@example.com
+- Email: bavisek@gmail.com
