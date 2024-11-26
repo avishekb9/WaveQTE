@@ -80,6 +80,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Bhandari Avishek \email{bavisek@gmail.com}
+\strong{Maintainer}: Avishek Bhandari \email{bavisek@gmail.com}
 
 }
