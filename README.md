@@ -22,8 +22,9 @@ WaveQTE is an R package that implements Wavelet-based Quantile Transfer Entropy 
 # Install dependencies
 install.packages(c("devtools", "quantmod", "waveslim", "quantreg", "igraph"))
 
+
 # Install WaveQTE
-devtools::install_github("username/WaveQTE")
+devtools::install_github("avishekb9/WaveQTE")
 ```
 
 ## Quick Start
