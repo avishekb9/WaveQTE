@@ -1,0 +1,117 @@
+---
+title: "Getting Started with WaveQTE"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with WaveQTE}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## Introduction
+
+The WaveQTE package implements Wavelet-based Quantile Transfer Entropy analysis for financial time series. This vignette demonstrates basic usage of the package.
+
+## Installation
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("username/WaveQTE")
+library(WaveQTE)
+```
+
+## Data Preparation
+
+First, let's get some financial data:
+
+```{r}
+# Define symbols and date range
+symbols <- c("AAPL", "MSFT", "JPM")
+start_date <- "2019-01-01"
+end_date <- "2023-12-31"
+
+# Get data
+returns <- get_stock_data(symbols, start_date, end_date)
+
+# Process returns
+returns <- process_returns(returns)
+
+# Calculate summary statistics
+stats <- calculate_summary_stats(returns)
+print_summary_stats(stats)
+```
+
+## Wavelet Decomposition
+
+Perform wavelet decomposition on the return series:
+
+```{r}
+# Decompose each series
+wave_decomp <- lapply(1:ncol(returns), function(i) {
+  wavelet_decompose(returns[,i])
+})
+
+# Analyze variance contributions
+var_analysis <- lapply(wave_decomp, analyze_wavelet_variance)
+```
+
+## Quantile Transfer Entropy Analysis
+
+Calculate QTE at different scales and quantile levels:
+
+```{r}
+# Define parameters
+tau_levels <- c(0.1, 0.25, 0.5, 0.75, 0.9)
+
+# Calculate multiscale QTE
+qte_results <- calculate_multiscale_qte(
+  wave_decomp[[1]], 
+  wave_decomp[[2]], 
+  tau_levels
+)
+
+# Visualize results
+plot_qte_heatmap(qte_results)
+```
+
+## Network Analysis
+
+Create and analyze QTE-based networks:
+
+```{r}
+# Create network for a specific scale
+net <- create_qte_network(returns, wave_decomp, scale = 1, tau = 0.5)
+
+# Calculate network metrics
+metrics <- calculate_network_metrics(net)
+
+# Visualize network
+plot_enhanced_network(net, scale = 1, tau = 0.5)
+```
+
+## Saving Results
+
+Save analysis results for later use:
+
+```{r}
+# Save results
+save_results(list(
+  qte = qte_results,
+  network = net,
+  metrics = metrics
+), "analysis_results.RData")
+```
+
+## Further Reading
+
+For more advanced features, see:
+- Vignette: "Financial Contagion Analysis"
+- Vignette: "Advanced Features"
+- Package documentation: `?WaveQTE`

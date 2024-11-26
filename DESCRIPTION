@@ -1,0 +1,51 @@
+Package: WaveQTE
+Title: Wavelet-based Quantile Transfer Entropy Analysis
+Version: 0.1.0
+Authors@R: 
+    person(given = "Avishek",
+           family = "Bhandari",
+           email = "bavisek@gmail.com",
+           role = c("aut", "cre"))
+Description: Implements Wavelet-based Quantile Transfer Entropy analysis for 
+    financial time series. Provides tools for analyzing market interconnectedness,
+    financial contagion, and risk spillover effects across different time scales
+    and market conditions. Features include wavelet decomposition, quantile transfer
+    entropy calculation, network analysis, and visualization tools for financial
+    market analysis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends:
+    R (>= 3.5.0)
+Imports:
+    quantmod,
+    waveslim,
+    quantreg,
+    igraph,
+    ggplot2,
+    reshape2,
+    viridis,
+    xts,
+    zoo,
+    moments,
+    tseries
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    plotly,
+    networkD3,
+    RColorBrewer,
+    corrplot,
+    dendextend,
+    tidyverse,
+    parallel,
+    doParallel,
+    foreach,
+    roll
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/avishekb9/WaveQTE
+BugReports: https://github.com/avishekb9/WaveQTE/issues

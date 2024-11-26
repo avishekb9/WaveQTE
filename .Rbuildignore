@@ -1,0 +1,15 @@
+^\.git$
+^\.gitignore$
+^README\.md$
+^CONTRIBUTING\.md$
+^LICENSE\.md$
+^.*\.Rproj$
+^\.Rproj\.user$
+^doc$
+^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^cran-comments\.md$
+^NEWS\.md$
+^data-raw$
