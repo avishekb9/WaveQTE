@@ -71,6 +71,14 @@ wavelet_decompose <- function(returns, n.levels = 4, wf = "la8") {
       warning("Wavelet reconstruction shows numerical instability")
     }
 
+    # Check reconstruction accuracy with relative tolerance
+    max_abs_orig <- max(abs(returns))
+    rel_diff <- max(abs(recon - returns)) / max_abs_orig
+    if (rel_diff > 0.01) {  # 1% relative difference tolerance
+      warning("Wavelet reconstruction shows numerical instability, relative difference: ",
+              format(rel_diff * 100, digits = 3), "%")
+    }
+
     return(result)
 
   }, error = function(e) {
