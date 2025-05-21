@@ -68,7 +68,7 @@ get_stock_data <- function(symbols = NULL,
   # Handle different data sources
   if (data_source == "builtin") {
     # URL to the raw CSV file on GitHub
-    data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/main/market_indices.csv"
+    data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/master/market_indices.csv"
     # Or if you uploaded to data folder:
     # data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/main/data/market_indices.csv"
     
