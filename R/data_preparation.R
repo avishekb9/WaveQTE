@@ -252,6 +252,17 @@ calculate_summary_stats <- function(returns) {
 #' crisis_periods <- list(covid = c("2020-01-01", "2020-12-31"))
 #' check_data_quality(data, crisis_periods)
 #' }
+#' @examples
+#' # Using built-in dataset
+#' data <- get_stock_data(use_builtin = TRUE)
+#' processed_data <- process_returns(data)
+#' head(processed_data)
+#' @examples
+#' # Using built-in dataset
+#' data <- get_stock_data(use_builtin = TRUE)
+#' stats <- calculate_summary_stats(data)
+#' print_summary_stats(stats)
+
 check_data_quality <- function(market_data, crisis_periods = NULL) {
   for(market_name in names(market_data)) {
     cat("\nChecking", market_name, "market data:")
