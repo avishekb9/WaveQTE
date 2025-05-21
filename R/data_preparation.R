@@ -70,7 +70,7 @@ get_stock_data <- function(symbols = NULL,
     # URL to the raw CSV file on GitHub
     data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/master/market_indices.csv"
     # Or if you uploaded to data folder:
-    # data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/main/data/market_indices.csv"
+    # data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/master/data/market_indices.csv"
     
     # Download and read the data
     market_data <- tryCatch({
