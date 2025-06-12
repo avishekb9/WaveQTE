@@ -1,0 +1,11 @@
+pandoc: 2.9.2.1
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  advanced-features: advanced-features.html
+  basic-usage: basic-usage.html
+  contagion-analysis: contagion-analysis.html
+last_built: 2025-06-12T17:26Z
+urls:
+  reference: https://avishekb9.github.io/WaveQTE/reference
+  article: https://avishekb9.github.io/WaveQTE/articles

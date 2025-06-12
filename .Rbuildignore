@@ -20,3 +20,6 @@
 ^Rplots\.pdf$
 ^market_indices\.csv$
 ^\.claude$
+^docs$
+^_pkgdown\.yml$
+^pkgdown$

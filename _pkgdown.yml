@@ -1,0 +1,179 @@
+url: https://avishekb9.github.io/WaveQTE
+
+title: WaveQTE
+description: >
+  Wavelet-based Quantile Transfer Entropy Analysis for Financial Time Series.
+  Analyze market interconnectedness, financial contagion, and risk spillover 
+  effects across different time scales and market conditions.
+
+authors:
+  Avishek Bhandari:
+    href: https://github.com/avishekb9
+
+development:
+  mode: auto
+
+home:
+  title: WaveQTE • Wavelet-based Quantile Transfer Entropy Analysis
+  description: >
+    Advanced R package for financial time series analysis using wavelet decomposition 
+    and quantile transfer entropy. Perfect for researchers, practitioners, and 
+    policymakers in economics and finance.
+
+  links:
+  - text: Browse source code
+    href: https://github.com/avishekb9/WaveQTE
+
+navbar:
+  title: "WaveQTE"
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+      aria-label: "Home"
+    - text: "Get Started"
+      href: articles/basic-usage.html
+    - text: "Tutorials"
+      menu:
+      - text: "Basic Usage"
+        href: articles/basic-usage.html
+      - text: "Advanced Features"
+        href: articles/advanced-features.html
+      - text: "Contagion Analysis"
+        href: articles/contagion-analysis.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/avishekb9/WaveQTE
+    - icon: fa-download
+      href: https://github.com/avishekb9/WaveQTE/archive/master.zip
+
+reference:
+- title: "Data Preparation"
+  desc: "Functions for importing and processing financial data"
+  contents:
+  - get_stock_data
+  - process_returns
+  - calculate_summary_stats
+  - check_data_quality
+  - check_dependencies
+
+- title: "Wavelet Analysis"
+  desc: "Wavelet decomposition and analysis functions"
+  contents:
+  - wavelet_decompose
+  - safe_wavelet_decompose
+  - analyze_wavelet_variance
+  - print_wavelet_summary
+
+- title: "Quantile Transfer Entropy"
+  desc: "Core QTE calculation and analysis"
+  contents:
+  - calculate_qte
+  - calculate_multiscale_qte
+  - calculate_rolling_qte
+  - bootstrap_qte
+  - test_qte_significance
+
+- title: "Network Analysis"
+  desc: "Network construction and metrics"
+  contents:
+  - create_qte_network
+  - create_multiscale_networks
+  - calculate_network_metrics
+
+- title: "Financial Contagion"
+  desc: "Crisis and contagion analysis tools"
+  contents:
+  - calculate_contagion_index
+  - calculate_dynamic_contagion
+  - calculate_cross_market_correlation
+  - identify_crisis_periods
+  - crisis_analysis
+
+- title: "Visualization"
+  desc: "Plotting and visualization functions"
+  contents:
+  - plot_enhanced_network
+  - plot_qte_heatmap
+  - plot_rolling_qte
+  - plot_market_strength
+  - plot_spillover_heatmap
+
+- title: "Utilities"
+  desc: "Helper and utility functions"
+  contents:
+  - save_results
+  - load_results
+  - save_plot
+  - print_summary_stats
+
+- title: "Data"
+  desc: "Built-in datasets"
+  contents:
+  - market_indices
+
+- title: "Package Topics"
+  desc: "Package-level documentation"
+  contents:
+  - data_preparation
+  - wavelet_decomposition
+  - quantile_transfer_entropy
+  - network_analysis
+  - contagion_analysis
+  - visualization
+  - utils
+
+articles:
+- title: "Getting Started"
+  navbar: ~
+  contents:
+  - basic-usage
+
+- title: "Advanced Analysis"
+  navbar: ~
+  contents:
+  - advanced-features
+  - contagion-analysis
+
+template:
+  bootstrap: 5
+  bslib:
+    preset: bootstrap
+    primary: "#0066CC"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+  
+  assets: pkgdown/assets
+    
+  includes:
+    in_header: |
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+      <style>
+        body { font-family: 'Inter', sans-serif; }
+        .navbar-brand { font-weight: 700; }
+        .page-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .page-header h1 { color: white; font-weight: 700; }
+        .btn-primary { background: linear-gradient(45deg, #0066CC, #004499); border: none; }
+        .card { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 12px; }
+        .highlight { background: #f8f9fa; border-left: 4px solid #0066CC; padding: 1rem; margin: 1rem 0; }
+      </style>
+
+footer:
+  structure:
+    left: [developed_by, built_with]
+    right: [package]
+  components:
+    developed_by: |
+      Developed by [Avishek Bhandari](https://github.com/avishekb9)
+    built_with: |
+      Built with [pkgdown](https://pkgdown.r-lib.org/) and [Bootstrap 5](https://getbootstrap.com/)
+    package: |
+      <a href="https://github.com/avishekb9/WaveQTE">
+        <i class="fab fa-github"></i> Source Code
+      </a>

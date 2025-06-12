@@ -47,5 +47,5 @@ Suggests:
     roll
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-URL: https://github.com/avishekb9/WaveQTE
+URL: https://avishekb9.github.io/WaveQTE, https://github.com/avishekb9/WaveQTE
 BugReports: https://github.com/avishekb9/WaveQTE/issues
