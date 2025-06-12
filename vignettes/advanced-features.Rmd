@@ -1,0 +1,216 @@
+---
+title: "Advanced Features in WaveQTE"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Features in WaveQTE}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## Advanced Wavelet Analysis
+
+### Different Wavelet Filters
+
+```{r}
+library(WaveQTE)
+
+# Get data
+data <- get_stock_data("AAPL", "2019-01-01", "2023-12-31")
+
+# Compare different wavelet filters
+filters <- c("la8", "d4", "c6")
+wave_results <- lapply(filters, function(wf) {
+  wavelet_decompose(data[,1], wf = wf)
+})
+
+# Compare variance decompositions
+var_results <- lapply(wave_results, analyze_wavelet_variance)
+
+# Print results
+for(i in seq_along(filters)) {
+  cat("\nFilter:", filters[i], "\n")
+  print(var_results[[i]]$percentage)
+}
+```
+
+### Bootstrap Analysis
+
+```{r}
+# Perform bootstrap analysis
+x <- as.numeric(data[,1])
+y <- lag(x, 1)  # Create lagged series
+
+boot_results <- bootstrap_qte(
+  x, y,
+  tau = 0.5,
+  B = 1000,
+  block_size = 20
+)
+
+# Analyze results
+hist(boot_results$boot_samples,
+     main = "Bootstrap Distribution of QTE",
+     breaks = 50)
+
+cat("95% Confidence Interval:", 
+    paste(round(boot_results$ci, 4), collapse = " to "))
+```
+
+## Network Analysis Options
+
+### Community Detection
+
+```{r}
+# Create network
+net <- create_qte_network(data, wave_results, scale = 1)
+metrics <- calculate_network_metrics(net)
+
+# Analyze communities
+communities <- metrics$communities
+print(communities)
+
+# Plot with community structure
+plot_enhanced_network(net, scale = 1, tau = 0.5) +
+  aes(color = factor(membership(communities)))
+```
+
+### Network Dynamics
+
+```{r}
+# Calculate time-varying networks
+window_size <- 252
+n_windows <- nrow(data) - window_size + 1
+
+network_evolution <- lapply(1:n_windows, function(i) {
+  window_data <- data[i:(i+window_size-1),]
+  window_wave <- lapply(1:ncol(window_data), function(j) {
+    wavelet_decompose(window_data[,j])
+  })
+  create_qte_network(window_data, window_wave, scale = 1)
+})
+
+# Analyze network metrics over time
+density_evolution <- sapply(network_evolution, function(net) {
+  calculate_network_metrics(net)$density
+})
+
+plot(density_evolution, type = "l",
+     main = "Network Density Evolution",
+     xlab = "Time", ylab = "Density")
+```
+
+## Customizing Visualizations
+
+### Enhanced Network Plots
+
+```{r}
+# Create custom network visualization
+plot_enhanced_network(net, scale = 1, tau = 0.5) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set3") +
+  ggtitle("Custom Network Visualization") +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14),
+    legend.position = "bottom"
+  )
+```
+
+### Custom Heatmaps
+
+```{r}
+# Calculate QTE matrix
+qte_results <- calculate_multiscale_qte(
+  wave_results[[1]], 
+  wave_results[[2]], 
+  tau_levels = seq(0.1, 0.9, by = 0.1)
+)
+
+# Create custom heatmap
+plot_qte_heatmap(qte_results) +
+  scale_fill_viridis_c(option = "magma") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(hjust = 0.5, size = 14)
+  )
+```
+
+## Advanced Parameter Settings
+
+### Optimal Wavelet Level Selection
+
+```{r}
+# Function to evaluate decomposition levels
+evaluate_levels <- function(data, max_level = 8) {
+  results <- lapply(1:max_level, function(level) {
+    wave <- wavelet_decompose(data, n.levels = level)
+    var_analysis <- analyze_wavelet_variance(wave)
+    list(
+      level = level,
+      variance = var_analysis$variance,
+      percentage = var_analysis$percentage
+    )
+  })
+  
+  # Find optimal level based on variance explained
+  var_explained <- sapply(results, function(r) {
+    sum(unlist(r$percentage[1:length(r$percentage)-1]))
+  })
+  
+  optimal_level <- which.max(diff(var_explained))
+  return(list(
+    optimal_level = optimal_level,
+    var_explained = var_explained
+  ))
+}
+
+# Apply to data
+level_analysis <- evaluate_levels(as.numeric(data[,1]))
+cat("Optimal decomposition level:", level_analysis$optimal_level)
+```
+
+## Performance Optimization
+
+### Parallel Processing
+
+```{r}
+library(parallel)
+library(doParallel)
+
+# Setup parallel backend
+n_cores <- detectCores() - 1
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
+
+# Parallel QTE calculation
+parallel_qte <- function(returns, wave_decomp, tau_levels) {
+  foreach(tau = tau_levels, .combine = rbind) %dopar% {
+    sapply(1:length(wave_decomp[[1]]$details), function(scale) {
+      calculate_qte(
+        wave_decomp[[1]]$details[[scale]],
+        wave_decomp[[2]]$details[[scale]],
+        tau = tau
+      )
+    })
+  }
+}
+
+# Use parallel implementation
+system.time({
+  results_parallel <- parallel_qte(
+    data,
+    wave_results,
+    seq(0.1, 0.9, by = 0.1)
+  )
+})
+
+stopCluster(cl)
+```

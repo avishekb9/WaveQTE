@@ -1,0 +1,137 @@
+---
+title: "Financial Contagion Analysis with WaveQTE"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Financial Contagion Analysis with WaveQTE}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## Introduction
+
+This vignette demonstrates how to analyze financial contagion using the WaveQTE package.
+
+## Market Data Setup
+
+```{r}
+library(WaveQTE)
+
+# Define market groups
+dm_symbols <- c("SPY", "EWU", "EWJ", "EWG", "EWQ")  # Developed markets ETFs
+em_symbols <- c("EWZ", "FXI", "INDA", "EWY", "EIDO") # Emerging markets ETFs
+
+# Get and process data
+dm_returns <- get_stock_data(dm_symbols, "2019-01-01", "2023-12-31")
+em_returns <- get_stock_data(em_symbols, "2019-01-01", "2023-12-31")
+
+dm_returns <- process_returns(dm_returns)
+em_returns <- process_returns(em_returns)
+```
+
+## Wavelet Decomposition
+
+```{r}
+# Parameters
+params <- list(
+  n_levels = 4,
+  tau_levels = c(0.1, 0.25, 0.5, 0.75, 0.9),
+  wf = "la8"
+)
+
+# Decompose developed market returns
+dm_wave <- lapply(1:ncol(dm_returns), function(i) {
+  wavelet_decompose(dm_returns[,i], n.levels = params$n_levels, wf = params$wf)
+})
+
+# Decompose emerging market returns
+em_wave <- lapply(1:ncol(em_returns), function(i) {
+  wavelet_decompose(em_returns[,i], n.levels = params$n_levels, wf = params$wf)
+})
+```
+
+## Contagion Analysis
+
+```{r}
+# Calculate contagion measures
+contagion_matrix <- calculate_contagion_index(dm_returns, em_returns)
+dci_results <- calculate_dynamic_contagion(dm_returns, em_returns)
+
+# Plot results
+plot_contagion_network(contagion_matrix, dm_symbols, em_symbols)
+plot_contagion_heatmap(contagion_matrix, dm_symbols, em_symbols)
+```
+
+## Crisis Period Analysis
+
+```{r}
+# Identify crisis periods
+crisis_periods <- identify_crisis_periods(cbind(dm_returns, em_returns))
+
+# Analyze crisis vs non-crisis periods
+crisis_results <- crisis_analysis(dm_returns, em_returns, crisis_periods)
+
+# Compare results
+plot_crisis_comparison(crisis_results)
+```
+
+## Cross-Market Correlation Analysis
+
+```{r}
+# Calculate rolling correlations
+correlations <- calculate_cross_market_correlation(
+  dm_returns, 
+  em_returns, 
+  window_size = 252
+)
+
+# Analyze correlation patterns
+plot_rolling_qte(correlations, window_size = 252)
+```
+
+## Multiscale Analysis
+
+```{r}
+# Calculate QTE at different scales
+for(scale in 1:params$n_levels) {
+  for(tau in params$tau_levels) {
+    cat("\nScale:", scale, "Tau:", tau, "\n")
+    
+    # Calculate and plot QTE networks
+    net <- create_qte_network(
+      cbind(dm_returns, em_returns),
+      c(dm_wave, em_wave),
+      scale = scale,
+      tau = tau
+    )
+    
+    plot_enhanced_network(net, scale, tau)
+  }
+}
+```
+
+## Saving Results
+
+```{r}
+# Save analysis results
+save_results(list(
+  contagion = contagion_matrix,
+  dci = dci_results,
+  crisis = crisis_results,
+  correlations = correlations
+), "contagion_analysis.RData")
+```
+
+## Additional Resources
+
+For more information, see:
+- Package documentation: `?WaveQTE`
+- Basic usage vignette: `vignette("basic-usage", package = "WaveQTE")`
+- Advanced features vignette: `vignette("advanced-features", package = "WaveQTE")`
