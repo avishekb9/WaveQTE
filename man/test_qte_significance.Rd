@@ -22,7 +22,7 @@ List containing test statistics and p-value
 Test QTE Significance
 }
 \examples{
-\dontrun{
+\donttest{
 x <- rnorm(100)
 y <- 0.5 * x + rnorm(100, sd = 0.1)
 test_result <- test_qte_significance(x, y)

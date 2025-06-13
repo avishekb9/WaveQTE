@@ -18,7 +18,7 @@ ggplot object
 Plot QTE Heatmap
 }
 \examples{
-\dontrun{
+\donttest{
 qte_results <- calculate_multiscale_qte(wave_x, wave_y, tau_levels)
 plot_qte_heatmap(qte_results)
 }

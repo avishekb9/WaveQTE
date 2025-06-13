@@ -23,7 +23,7 @@ data <- list(developed = get_stock_data("AAPL"))
 crisis_periods <- list(covid = c("2020-01-01", "2020-12-31"))
 check_data_quality(data, crisis_periods)
 }
-\dontrun{
+\donttest{
 # Using built-in dataset
 data <- get_stock_data(data_source = "builtin")
 processed_data <- process_returns(data)

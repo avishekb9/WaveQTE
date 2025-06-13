@@ -16,7 +16,7 @@ List of network metrics
 Calculate Network Metrics
 }
 \examples{
-\dontrun{
+\donttest{
 data <- matrix(rnorm(300), ncol = 3)
 wave <- lapply(1:ncol(data), function(i) wavelet_decompose(data[,i]))
 net <- create_qte_network(data, wave, scale = 1)

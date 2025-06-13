@@ -16,7 +16,7 @@ List containing variance decomposition and percentage contributions
 Analyze Wavelet Variance
 }
 \examples{
-\dontrun{
+\donttest{
 data <- rnorm(256)
 wave <- wavelet_decompose(data)
 var_analysis <- analyze_wavelet_variance(wave)

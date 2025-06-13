@@ -20,7 +20,7 @@ ggplot object
 Plot Market Strength
 }
 \examples{
-\dontrun{
+\donttest{
 net <- create_qte_network(returns, wave_decomp, scale = 1)
 plot_market_strength(net, scale = 1, tau = 0.5)
 }

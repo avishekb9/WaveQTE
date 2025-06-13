@@ -17,7 +17,7 @@ NULL
 #' @return ggplot object
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' net <- create_qte_network(returns, wave_decomp, scale = 1)
 #' plot_enhanced_network(net, scale = 1, tau = 0.5)
 #' }
@@ -153,7 +153,7 @@ plot_enhanced_network <- function(network, scale, tau) {
 #' @return ggplot object
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' qte_results <- calculate_multiscale_qte(wave_x, wave_y, tau_levels)
 #' plot_qte_heatmap(qte_results)
 #' }
@@ -189,7 +189,7 @@ plot_qte_heatmap <- function(qte_matrix, title = "Multiscale QTE Analysis") {
 #' @return ggplot object
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' rolling_results <- calculate_rolling_qte(x, y, window_size = 100)
 #' plot_rolling_qte(rolling_results, window_size = 100)
 #' }
@@ -243,7 +243,7 @@ plot_rolling_qte <- function(rolling_qte, window_size) {
 #' @return ggplot object
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' net <- create_qte_network(returns, wave_decomp, scale = 1)
 #' plot_market_strength(net, scale = 1, tau = 0.5)
 #' }
@@ -298,7 +298,7 @@ plot_market_strength <- function(network, scale, tau) {
 #' @return ggplot object
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' spillover_plot <- plot_spillover_heatmap(spillover_matrix)
 #' }
 plot_spillover_heatmap <- function(spillover_matrix, title = "Spillover Analysis") {
@@ -338,9 +338,9 @@ plot_spillover_heatmap <- function(spillover_matrix, title = "Spillover Analysis
 #' @return Invisible NULL
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' p <- plot_qte_heatmap(qte_results)
-#' save_plot(p, "heatmap.png")
+#' save_plot(p, file.path(tempdir(), "heatmap.png"))
 #' }
 save_plot <- function(plot, filename, width = 10, height = 8, dpi = 300) {
   tryCatch({
@@ -352,7 +352,7 @@ save_plot <- function(plot, filename, width = 10, height = 8, dpi = 300) {
       dpi = dpi,
       bg = "white"
     )
-    cat("Plot saved to:", filename, "\n")
+    message("Plot saved to: ", filename)
   }, error = function(e) {
     stop("Failed to save plot: ", e$message)
   })

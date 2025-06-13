@@ -1,6 +1,8 @@
 #' Data Preparation Functions
 #' @name data_preparation
 #' @description Functions for data import and processing
+#' @importFrom utils globalVariables
+utils::globalVariables("market_indices")
 NULL
 
 #' Get Stock Market Data
@@ -21,7 +23,7 @@ NULL
 #' @param return_prices Logical, whether to return prices instead of returns (default: FALSE)
 #' @return An xts object containing log returns or prices
 #' @import quantmod xts zoo
-#' @importFrom utils read.csv
+#' @importFrom utils read.csv data
 #' @export
 #' @examples
 #' # Method 1: Using built-in dataset
@@ -68,17 +70,9 @@ get_stock_data <- function(symbols = NULL,
   
   # Handle different data sources
   if (data_source == "builtin") {
-    # URL to the raw CSV file on GitHub
-    data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/master/market_indices.csv"
-    # Or if you uploaded to data folder:
-    # data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/master/data/market_indices.csv"
-    
-    # Download and read the data
-    market_data <- tryCatch({
-      read.csv(data_url)
-    }, error = function(e) {
-      stop("Could not download built-in dataset. Please check your internet connection.")
-    })
+    # Use built-in dataset from the package data
+    data("market_indices", envir = environment())
+    market_data <- market_indices
     
   } else if (data_source == "file") {
     # Check if file path is provided
@@ -188,8 +182,8 @@ get_stock_data <- function(symbols = NULL,
 #' @importFrom stats complete.cases sd
 #' @export
 #' @examples
-#' \dontrun{
-#' data <- get_stock_data("AAPL")
+#' \donttest{
+#' data <- get_stock_data(data_source = "builtin")
 #' processed_data <- process_returns(data)
 #' }
 process_returns <- function(returns) {
@@ -210,8 +204,8 @@ process_returns <- function(returns) {
 #' @importFrom tseries jarque.bera.test adf.test
 #' @export
 #' @examples
-#' \dontrun{
-#' data <- get_stock_data("AAPL")
+#' \donttest{
+#' data <- get_stock_data(data_source = "builtin")
 #' stats <- calculate_summary_stats(data)
 #' }
 calculate_summary_stats <- function(returns) {
@@ -253,7 +247,7 @@ calculate_summary_stats <- function(returns) {
 #' crisis_periods <- list(covid = c("2020-01-01", "2020-12-31"))
 #' check_data_quality(data, crisis_periods)
 #' }
-#' \dontrun{
+#' \donttest{
 #' # Using built-in dataset
 #' data <- get_stock_data(data_source = "builtin")
 #' processed_data <- process_returns(data)
@@ -262,29 +256,29 @@ calculate_summary_stats <- function(returns) {
 
 check_data_quality <- function(market_data, crisis_periods = NULL) {
   for(market_name in names(market_data)) {
-    cat("\nChecking", market_name, "market data:")
+    message("Checking ", market_name, " market data:")
     data <- market_data[[market_name]]
 
-    cat("\n  Observations:", nrow(data))
-    cat("\n  Assets:", ncol(data))
+    message("  Observations: ", nrow(data))
+    message("  Assets: ", ncol(data))
 
     if (!is.null(crisis_periods)) {
       for(crisis in names(crisis_periods)) {
         crisis_data <- window(data,
                               start = as.Date(crisis_periods[[crisis]][1]),
                               end = as.Date(crisis_periods[[crisis]][2]))
-        cat("\n  ", crisis, "period observations:", nrow(crisis_data))
+        message("  ", crisis, " period observations: ", nrow(crisis_data))
       }
     }
 
     missing <- colSums(is.na(data))
     if(any(missing > 0)) {
-      cat("\n  Warning: Missing values detected:")
+      warning("Missing values detected:")
       print(missing[missing > 0])
     }
 
     adf_tests <- apply(data, 2, function(x) adf.test(x)$p.value)
-    cat("\n  Non-stationary series:",
-        sum(adf_tests > 0.05), "out of", ncol(data))
+    message("  Non-stationary series: ",
+        sum(adf_tests > 0.05), " out of ", ncol(data))
   }
 }

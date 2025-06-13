@@ -13,7 +13,7 @@ NULL
 #' @importFrom stats window
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' dm_returns <- get_stock_data(c("SPY", "EWU"))
 #' em_returns <- get_stock_data(c("EWZ", "FXI"))
 #' contagion <- calculate_contagion_index(dm_returns, em_returns)
@@ -55,7 +55,7 @@ calculate_contagion_index <- function(returns_dm, returns_em, tau = 0.05, n.leve
 #' @return Matrix of dynamic contagion indices
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' dm_returns <- get_stock_data(c("SPY", "EWU"))
 #' em_returns <- get_stock_data(c("EWZ", "FXI"))
 #' dci <- calculate_dynamic_contagion(dm_returns, em_returns)
@@ -91,7 +91,7 @@ calculate_dynamic_contagion <- function(returns_dm, returns_em, window_size = 25
 #' @importFrom stats cor
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' dm_returns <- get_stock_data(c("SPY", "EWU"))
 #' em_returns <- get_stock_data(c("EWZ", "FXI"))
 #' correlations <- calculate_cross_market_correlation(dm_returns, em_returns)
@@ -129,7 +129,7 @@ calculate_cross_market_correlation <- function(returns_dm, returns_em, window_si
 #' @importFrom stats sd
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- get_stock_data(c("SPY", "EWZ"))
 #' crisis_periods <- identify_crisis_periods(data)
 #' }
@@ -151,7 +151,7 @@ identify_crisis_periods <- function(returns, threshold = -2) {
 #' @return List containing contagion measures for crisis and normal periods
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' dm_returns <- get_stock_data(c("SPY", "EWU"))
 #' em_returns <- get_stock_data(c("EWZ", "FXI"))
 #' crisis_periods <- identify_crisis_periods(cbind(dm_returns, em_returns))

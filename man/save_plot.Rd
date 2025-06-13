@@ -24,8 +24,8 @@ Invisible NULL
 Save Plot to File
 }
 \examples{
-\dontrun{
+\donttest{
 p <- plot_qte_heatmap(qte_results)
-save_plot(p, "heatmap.png")
+save_plot(p, file.path(tempdir(), "heatmap.png"))
 }
 }

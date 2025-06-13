@@ -16,8 +16,8 @@ Processed xts object
 Process Returns Data
 }
 \examples{
-\dontrun{
-data <- get_stock_data("AAPL")
+\donttest{
+data <- get_stock_data(data_source = "builtin")
 processed_data <- process_returns(data)
 }
 }

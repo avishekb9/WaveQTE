@@ -15,7 +15,7 @@ NULL
 #' @return List containing wavelet decomposition results
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- rnorm(256)
 #' wave <- wavelet_decompose(data, n.levels = 4)
 #' }
@@ -97,7 +97,7 @@ wavelet_decompose <- function(returns, n.levels = 4, wf = "la8") {
 #' @return List containing wavelet decomposition results
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- rnorm(256)
 #' wave <- safe_wavelet_decompose(data)
 #' }
@@ -144,7 +144,7 @@ safe_wavelet_decompose <- function(returns, n.levels = 4, wf = "la8") {
 #' @return List containing variance decomposition and percentage contributions
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- rnorm(256)
 #' wave <- wavelet_decompose(data)
 #' var_analysis <- analyze_wavelet_variance(wave)
@@ -197,26 +197,26 @@ analyze_wavelet_variance <- function(wave_decomp) {
 #' @return Invisible NULL
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- rnorm(256)
 #' wave <- wavelet_decompose(data)
 #' print_wavelet_summary(wave)
 #' }
 print_wavelet_summary <- function(wave_decomp) {
-  cat("\nWavelet Decomposition Summary:\n")
-  cat("Number of levels:", length(wave_decomp$details), "\n")
-  cat("Series length:", length(wave_decomp$original), "\n")
+  message("Wavelet Decomposition Summary:")
+  message("Number of levels: ", length(wave_decomp$details))
+  message("Series length: ", length(wave_decomp$original))
 
   # Calculate and print scale information
   for (i in seq_along(wave_decomp$details)) {
-    cat(sprintf("Scale %d (%s): %d coefficients\n",
+    message(sprintf("Scale %d (%s): %d coefficients",
                 i,
                 names(wave_decomp$details)[i],
                 length(wave_decomp$details[[i]])))
   }
 
   # Print smooth component info
-  cat("Smooth component length:", length(wave_decomp$smooth), "\n")
+  message("Smooth component length: ", length(wave_decomp$smooth))
 
   # Optional reconstruction check (non-failing)
   tryCatch({
@@ -225,9 +225,9 @@ print_wavelet_summary <- function(wave_decomp) {
       recon <- recon + d
     }
     max_diff <- max(abs(recon - wave_decomp$original))
-    cat(sprintf("\nMaximum reconstruction difference: %.2e\n", max_diff))
+    message("Maximum reconstruction difference: ", sprintf("%.2e", max_diff))
   }, error = function(e) {
-    cat("\nReconstruction check failed:", e$message, "\n")
+    warning("Reconstruction check failed: ", e$message)
   })
 
   invisible(NULL)

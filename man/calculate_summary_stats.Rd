@@ -16,8 +16,8 @@ List of statistics
 Calculate Summary Statistics
 }
 \examples{
-\dontrun{
-data <- get_stock_data("AAPL")
+\donttest{
+data <- get_stock_data(data_source = "builtin")
 stats <- calculate_summary_stats(data)
 }
 }

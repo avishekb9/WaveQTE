@@ -16,7 +16,7 @@ Invisible NULL
 Print Wavelet Decomposition Summary
 }
 \examples{
-\dontrun{
+\donttest{
 data <- rnorm(256)
 wave <- wavelet_decompose(data)
 print_wavelet_summary(wave)

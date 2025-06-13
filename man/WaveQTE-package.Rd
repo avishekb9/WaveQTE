@@ -74,6 +74,7 @@ Add relevant papers and references here.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://avishekb9.github.io/WaveQTE}
   \item \url{https://github.com/avishekb9/WaveQTE}
   \item Report bugs at \url{https://github.com/avishekb9/WaveQTE/issues}
 }

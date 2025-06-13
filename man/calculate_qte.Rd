@@ -22,7 +22,7 @@ Numeric QTE value or NA if calculation fails
 Calculate Quantile Transfer Entropy
 }
 \examples{
-\dontrun{
+\donttest{
 x <- rnorm(100)
 y <- 0.5 * x + rnorm(100, sd = 0.1)
 qte <- calculate_qte(x, y, tau = 0.5)

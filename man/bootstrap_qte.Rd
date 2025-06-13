@@ -26,7 +26,7 @@ List containing bootstrap samples and confidence intervals
 Bootstrap QTE Confidence Intervals
 }
 \examples{
-\dontrun{
+\donttest{
 x <- rnorm(100)
 y <- 0.5 * x + rnorm(100, sd = 0.1)
 boot_results <- bootstrap_qte(x, y, tau = 0.5, B = 1000)

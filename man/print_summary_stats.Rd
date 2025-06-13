@@ -16,8 +16,9 @@ Invisible NULL
 Print Summary Statistics
 }
 \examples{
-\dontrun{
-stats <- calculate_summary_stats(returns)
+\donttest{
+data <- get_stock_data(data_source = "builtin")
+stats <- calculate_summary_stats(data)
 print_summary_stats(stats)
 }
 }

@@ -11,7 +11,7 @@ NULL
 #' @export
 #' @examples
 #' \dontrun{
-#' save_results(list(qte = qte_results), "analysis_results.RData")
+#' save_results(list(qte = qte_results), file.path(tempdir(), "analysis_results.RData"))
 #' }
 save_results <- function(results, file_path) {
   if (!dir.exists(dirname(file_path))) {
@@ -29,7 +29,7 @@ save_results <- function(results, file_path) {
 #' @export
 #' @examples
 #' \dontrun{
-#' results <- load_results("analysis_results.RData")
+#' results <- load_results(file.path(tempdir(), "analysis_results.RData"))
 #' }
 load_results <- function(file_path) {
   if (!file.exists(file_path)) {
@@ -47,18 +47,19 @@ load_results <- function(file_path) {
 #' @return Invisible NULL
 #' @export
 #' @examples
-#' \dontrun{
-#' stats <- calculate_summary_stats(returns)
+#' \donttest{
+#' data <- get_stock_data(data_source = "builtin")
+#' stats <- calculate_summary_stats(data)
 #' print_summary_stats(stats)
 #' }
 print_summary_stats <- function(stats) {
-  cat("\nBasic Statistics:\n")
+  message("Basic Statistics:")
   print(round(stats$basic, 4))
 
-  cat("\nRisk Measures:\n")
+  message("Risk Measures:")
   print(round(stats$risk, 4))
 
-  cat("\nCorrelation Matrix:\n")
+  message("Correlation Matrix:")
   print(round(stats$correlation, 4))
 
   invisible(NULL)

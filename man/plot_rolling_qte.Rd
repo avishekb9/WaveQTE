@@ -18,7 +18,7 @@ ggplot object
 Plot Rolling QTE
 }
 \examples{
-\dontrun{
+\donttest{
 rolling_results <- calculate_rolling_qte(x, y, window_size = 100)
 plot_rolling_qte(rolling_results, window_size = 100)
 }

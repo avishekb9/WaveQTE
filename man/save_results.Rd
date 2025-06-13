@@ -19,6 +19,6 @@ Save Analysis Results
 }
 \examples{
 \dontrun{
-save_results(list(qte = qte_results), "analysis_results.RData")
+save_results(list(qte = qte_results), file.path(tempdir(), "analysis_results.RData"))
 }
 }

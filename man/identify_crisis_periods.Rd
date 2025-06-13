@@ -18,7 +18,7 @@ Logical vector indicating crisis periods
 Identify Crisis Periods
 }
 \examples{
-\dontrun{
+\donttest{
 data <- get_stock_data(c("SPY", "EWZ"))
 crisis_periods <- identify_crisis_periods(data)
 }

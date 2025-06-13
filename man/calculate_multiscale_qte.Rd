@@ -20,7 +20,7 @@ Matrix of QTE values for each scale and quantile
 Calculate Multiscale QTE
 }
 \examples{
-\dontrun{
+\donttest{
 # Generate test data
 x <- rnorm(256)
 y <- 0.5 * x + rnorm(256, sd = 0.1)

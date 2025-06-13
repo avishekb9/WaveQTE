@@ -15,7 +15,7 @@ NULL
 #' @return Numeric QTE value or NA if calculation fails
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' x <- rnorm(100)
 #' y <- 0.5 * x + rnorm(100, sd = 0.1)
 #' qte <- calculate_qte(x, y, tau = 0.5)
@@ -95,7 +95,7 @@ calculate_qte <- function(x, y, tau = 0.5, k = 1) {
 #' @return Matrix of QTE values for each scale and quantile
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Generate test data
 #' x <- rnorm(256)
 #' y <- 0.5 * x + rnorm(256, sd = 0.1)
@@ -153,7 +153,7 @@ calculate_multiscale_qte <- function(wave_x, wave_y, tau_levels) {
 #' @return List containing bootstrap samples and confidence intervals
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' x <- rnorm(100)
 #' y <- 0.5 * x + rnorm(100, sd = 0.1)
 #' boot_results <- bootstrap_qte(x, y, tau = 0.5, B = 1000)
@@ -223,7 +223,7 @@ bootstrap_qte <- function(x, y, tau = 0.5, B = 1000, block_size = 20,
 #' @return Vector of QTE values for each window
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' x <- rnorm(500)
 #' y <- 0.5 * x + rnorm(500, sd = 0.1)
 #' rolling_qte <- calculate_rolling_qte(x, y, window_size = 100)
@@ -265,7 +265,7 @@ calculate_rolling_qte <- function(x, y, window_size, tau = 0.5, step_size = 1) {
 #' @return List containing test statistics and p-value
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' x <- rnorm(100)
 #' y <- 0.5 * x + rnorm(100, sd = 0.1)
 #' test_result <- test_qte_significance(x, y)

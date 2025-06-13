@@ -18,7 +18,7 @@ ggplot object
 Plot Spillover Heatmap
 }
 \examples{
-\dontrun{
+\donttest{
 spillover_plot <- plot_spillover_heatmap(spillover_matrix)
 }
 }

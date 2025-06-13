@@ -20,7 +20,7 @@ List containing contagion measures for crisis and normal periods
 Analyze Crisis vs Non-Crisis Periods
 }
 \examples{
-\dontrun{
+\donttest{
 dm_returns <- get_stock_data(c("SPY", "EWU"))
 em_returns <- get_stock_data(c("EWZ", "FXI"))
 crisis_periods <- identify_crisis_periods(cbind(dm_returns, em_returns))

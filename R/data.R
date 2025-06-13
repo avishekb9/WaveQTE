@@ -20,10 +20,10 @@
 #' }
 #' @source Global market data
 #' @examples
-#' \dontrun{
-#' # Load the data directly from GitHub
-#' data_url <- "https://raw.githubusercontent.com/avishekb9/WaveQTE/main/market_indices.csv"
-#' market_data <- read.csv(data_url)
-#' head(market_data)
-#' }
+#' # Load the built-in market indices dataset
+#' data(market_indices)
+#' head(market_indices)
+#' 
+#' # Check the structure
+#' str(market_indices)
 NULL

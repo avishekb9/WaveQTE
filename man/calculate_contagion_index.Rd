@@ -22,7 +22,7 @@ Array containing contagion measures
 Calculate Contagion Index
 }
 \examples{
-\dontrun{
+\donttest{
 dm_returns <- get_stock_data(c("SPY", "EWU"))
 em_returns <- get_stock_data(c("EWZ", "FXI"))
 contagion <- calculate_contagion_index(dm_returns, em_returns)

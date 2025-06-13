@@ -20,7 +20,7 @@ Array of rolling correlations
 Calculate Cross-Market Correlation
 }
 \examples{
-\dontrun{
+\donttest{
 dm_returns <- get_stock_data(c("SPY", "EWU"))
 em_returns <- get_stock_data(c("EWZ", "FXI"))
 correlations <- calculate_cross_market_correlation(dm_returns, em_returns)

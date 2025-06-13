@@ -20,7 +20,7 @@ List containing wavelet decomposition results
 Perform Wavelet Decomposition
 }
 \examples{
-\dontrun{
+\donttest{
 data <- rnorm(256)
 wave <- wavelet_decompose(data, n.levels = 4)
 }

@@ -20,7 +20,7 @@ List of networks and metrics
 Create Multiscale Networks
 }
 \examples{
-\dontrun{
+\donttest{
 data <- matrix(rnorm(300), ncol = 3)
 wave <- lapply(1:ncol(data), function(i) wavelet_decompose(data[,i]))
 params <- list(n_levels = 4, tau_levels = c(0.1, 0.5, 0.9))

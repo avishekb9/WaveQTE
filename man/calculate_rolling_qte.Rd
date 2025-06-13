@@ -24,7 +24,7 @@ Vector of QTE values for each window
 Rolling Window QTE Analysis
 }
 \examples{
-\dontrun{
+\donttest{
 x <- rnorm(500)
 y <- 0.5 * x + rnorm(500, sd = 0.1)
 rolling_qte <- calculate_rolling_qte(x, y, window_size = 100)

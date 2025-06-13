@@ -27,7 +27,7 @@ Matrix of dynamic contagion indices
 Calculate Dynamic Contagion Index
 }
 \examples{
-\dontrun{
+\donttest{
 dm_returns <- get_stock_data(c("SPY", "EWU"))
 em_returns <- get_stock_data(c("EWZ", "FXI"))
 dci <- calculate_dynamic_contagion(dm_returns, em_returns)

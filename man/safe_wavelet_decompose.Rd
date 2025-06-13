@@ -20,7 +20,7 @@ List containing wavelet decomposition results
 Safe Wavelet Decomposition
 }
 \examples{
-\dontrun{
+\donttest{
 data <- rnorm(256)
 wave <- safe_wavelet_decompose(data)
 }

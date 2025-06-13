@@ -20,7 +20,7 @@ ggplot object
 Plot Enhanced Network
 }
 \examples{
-\dontrun{
+\donttest{
 net <- create_qte_network(returns, wave_decomp, scale = 1)
 plot_enhanced_network(net, scale = 1, tau = 0.5)
 }

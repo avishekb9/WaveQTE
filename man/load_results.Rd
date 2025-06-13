@@ -17,6 +17,6 @@ Load Analysis Results
 }
 \examples{
 \dontrun{
-results <- load_results("analysis_results.RData")
+results <- load_results(file.path(tempdir(), "analysis_results.RData"))
 }
 }

@@ -13,7 +13,7 @@ NULL
 #' @import igraph
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- matrix(rnorm(300), ncol = 3)
 #' wave <- lapply(1:ncol(data), function(i) wavelet_decompose(data[,i]))
 #' net <- create_qte_network(data, wave, scale = 1)
@@ -73,7 +73,7 @@ create_qte_network <- function(returns, wave_decomp, scale, tau = 0.5) {
 #' @return List of network metrics
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- matrix(rnorm(300), ncol = 3)
 #' wave <- lapply(1:ncol(data), function(i) wavelet_decompose(data[,i]))
 #' net <- create_qte_network(data, wave, scale = 1)
@@ -113,7 +113,7 @@ calculate_network_metrics <- function(network) {
 #' @return List of networks and metrics
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- matrix(rnorm(300), ncol = 3)
 #' wave <- lapply(1:ncol(data), function(i) wavelet_decompose(data[,i]))
 #' params <- list(n_levels = 4, tau_levels = c(0.1, 0.5, 0.9))
