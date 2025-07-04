@@ -9,20 +9,20 @@
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/WaveQTE)](https://cran.r-project.org/package=WaveQTE)
 [![Downloads](https://cranlogs.r-pkg.org/badges/WaveQTE)](https://cran.r-project.org/package=WaveQTE)
 
-## 🚀 Why WaveQTE?
+## Why WaveQTE?
 
 WaveQTE bridges the gap between theoretical finance and practical analysis by combining **wavelet decomposition** with **quantile transfer entropy** to reveal hidden patterns in financial markets. Whether you're a researcher, practitioner, or policymaker, WaveQTE provides the tools you need to understand:
 
-- 📊 **Market Interconnectedness** - How markets influence each other across time scales
-- 🌊 **Financial Contagion** - How crises spread between markets and regions  
-- 📈 **Risk Spillovers** - Directional risk transmission patterns
-- 🔗 **Network Dynamics** - Complex relationships in financial systems
+- **Market Interconnectedness** - How markets influence each other across time scales
+- **Financial Contagion** - How crises spread between markets and regions  
+- **Risk Spillovers** - Directional risk transmission patterns
+- **Network Dynamics** - Complex relationships in financial systems
 
-## ✨ Key Features
+## Key Features
 
 <div class="feature-grid">
 
-### 📁 **Multi-source Data Support**
+###   *Multi-source Data Support**
 - Built-in financial dataset with 10 global market indices
 - Yahoo Finance integration for real-time data
 - Custom data import capabilities
@@ -60,7 +60,7 @@ WaveQTE bridges the gap between theoretical finance and practical analysis by co
 
 </div>
 
-## 📦 Installation
+## Installation
 
 <div class="install-box">
 
@@ -77,9 +77,9 @@ library(WaveQTE)
 
 **Dependencies:** WaveQTE automatically installs required packages including `quantmod`, `waveslim`, `quantreg`, `igraph`, `ggplot2`, and others.
 
-## 🚀 Quick Start
+## Quick Start
 
-### 1️⃣ **Load Data**
+###  **Load Data**
 ```r
 # Use built-in dataset (recommended for testing)
 data <- get_stock_data(data_source = "builtin", 
@@ -91,14 +91,14 @@ data <- get_stock_data(data_source = "builtin",
 #                        end_date = "2023-12-31")
 ```
 
-### 2️⃣ **Process Returns**
+###   **Process Returns**
 ```r
 processed_data <- process_returns(data)
 summary_stats <- calculate_summary_stats(processed_data)
 print_summary_stats(summary_stats)
 ```
 
-### 3️⃣ **Wavelet Decomposition**
+###   **Wavelet Decomposition**
 ```r
 # Decompose time series into multiple scales
 wave_decomp <- lapply(1:ncol(processed_data), function(i) {
@@ -110,7 +110,7 @@ var_analysis <- lapply(wave_decomp, analyze_wavelet_variance)
 print_wavelet_summary(wave_decomp[[1]])
 ```
 
-### 4️⃣ **Quantile Transfer Entropy**
+###  **Quantile Transfer Entropy**
 ```r
 # Calculate multiscale QTE
 tau_levels <- c(0.1, 0.25, 0.5, 0.75, 0.9)
@@ -130,7 +130,7 @@ qte_results <- calculate_multiscale_qte(
 plot_qte_heatmap(qte_results, title = "Multiscale QTE Analysis")
 ```
 
-### 5️⃣ **Network Analysis**
+###  **Network Analysis**
 ```r
 # Build QTE-based financial network
 network <- create_qte_network(processed_data[1:256, ], 
@@ -144,7 +144,7 @@ print(paste("Network density:", round(metrics$density, 3)))
 plot_enhanced_network(network, scale = 1, tau = 0.5)
 ```
 
-### 6️⃣ **Financial Contagion Analysis**
+###   **Financial Contagion Analysis**
 ```r
 # Analyze contagion between developed and emerging markets
 dm_data <- get_stock_data(data_source = "builtin", 
@@ -159,14 +159,14 @@ contagion_results <- calculate_contagion_index(dm_data[1:256, ],
 # Identify crisis periods automatically
 crisis_periods <- identify_crisis_periods(cbind(dm_data, em_data))
 ```
-## 📚 Learning Resources
+##   Learning Resources
 
 ### 📖 **Comprehensive Vignettes**
 - **[Basic Usage](articles/basic-usage.html)** - Get started with core functionality
 - **[Advanced Features](articles/advanced-features.html)** - Explore sophisticated analysis techniques  
 - **[Contagion Analysis](articles/contagion-analysis.html)** - Specialized crisis and spillover analysis
 
-### 📊 **Data Sources**
+###    **Data Sources**
 WaveQTE supports multiple data sources for maximum flexibility:
 
 | Source | Description | Use Case |
@@ -183,33 +183,33 @@ yahoo_data <- get_stock_data(c("AAPL", "GOOGL"), "2020-01-01", "2023-12-31")
 custom_data <- get_stock_data(data_source = "file", file_path = "my_data.csv")
 ```
 
-## 🎯 Use Cases
+## Use Cases
 
 <div class="use-cases">
 
-### 🏛️ **Academic Research**
+### **Academic Research**
 - Publish-ready analysis for finance journals
 - Robust statistical methods with bootstrap testing
 - Comprehensive documentation and references
 
-### 🏢 **Risk Management**
+### **Risk Management**
 - Real-time spillover monitoring
 - Crisis early warning systems
 - Portfolio diversification analysis
 
-### 📊 **Policy Analysis**
+###  **Policy Analysis**
 - Systemic risk assessment
 - Financial stability monitoring
 - Cross-border contagion analysis
 
-### 💼 **Investment Strategy**
+###  **Investment Strategy**
 - Market interconnectedness insights
 - Timing and allocation decisions
 - Risk-adjusted portfolio construction
 
 </div>
 
-## 🏗️ Package Architecture
+##  Package Architecture
 
 ```
 WaveQTE/
@@ -225,13 +225,13 @@ WaveQTE/
 ├── 🧪 tests/                       # Extensive test suite
 └── 📖 man/                         # Complete documentation
 ```
-## 🌟 Real-World Applications
+##  Real-World Applications
 
 <div class="applications">
 
 | Application | Description | Benefit |
 |-------------|-------------|---------|
-| **🏛️ Academic Research** | Publish-ready analysis for finance journals | Rigorous methodology with statistical testing |
+| **🏛️ Academic Research** | A new approcah for financial analytics| Rigorous methodology with statistical testing |
 | **🏢 Risk Management** | Real-time spillover monitoring | Early warning systems for portfolio protection |
 | **📊 Policy Analysis** | Systemic risk assessment | Evidence-based financial stability decisions |
 | **💼 Investment Strategy** | Market interconnectedness insights | Enhanced portfolio diversification |
@@ -239,7 +239,7 @@ WaveQTE/
 
 </div>
 
-## 📈 Performance & Quality
+## Performance & Quality
 
 - ✅ **109 passing tests** with comprehensive coverage
 - ✅ **CRAN-compliant** package structure
@@ -247,23 +247,23 @@ WaveQTE/
 - ✅ **Bootstrap validation** for statistical robustness
 - ✅ **Extensive documentation** with real-world examples
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Whether you're fixing bugs, adding features, or improving documentation:
 
-1. 🍴 Fork the repository
-2. 🌱 Create a feature branch
-3. ✨ Make your changes
-4. 🧪 Run tests (`devtools::test()`)
-5. 📝 Submit a pull request
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests (`devtools::test()`)
+5. Submit a pull request
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
-## 📚 Citation
+## Citation
 
 If you use WaveQTE in your research, please cite:
 
@@ -284,9 +284,7 @@ If you use WaveQTE in your research, please cite:
 - 📧 **Contact**: bavisek@gmail.com
 - 📖 **Documentation**: [Package Website](https://avishekb9.github.io/WaveQTE)
 
-## 🙏 Acknowledgments
-
-WaveQTE is built on the shoulders of giants:
+## Acknowledgments
 
 - **R Core Team** - The R statistical computing environment
 - **waveslim** package - Wavelet analysis functionality  
