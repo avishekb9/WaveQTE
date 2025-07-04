@@ -162,7 +162,7 @@ crisis_periods <- identify_crisis_periods(cbind(dm_data, em_data))
 ##   Learning Resources
 
 ### 📖 **Comprehensive Vignettes**
-- **[Basic Usage](articles/basic-usage.html)** - Get started with core functionality
+- **[Basic Usage](https://avishekb9.github.io/WaveQTE/articles/basic-usage.html)** - Get started with core functionality
 - **[Advanced Features](articles/advanced-features.html)** - Explore sophisticated analysis techniques  
 - **[Contagion Analysis](articles/contagion-analysis.html)** - Specialized crisis and spillover analysis
 
