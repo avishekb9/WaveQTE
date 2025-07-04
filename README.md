@@ -22,37 +22,37 @@ WaveQTE bridges the gap between theoretical finance and practical analysis by co
 
 <div class="feature-grid">
 
-###   *Multi-source Data Support**
+###  **Multi-source Data Support**
 - Built-in financial dataset with 10 global market indices
 - Yahoo Finance integration for real-time data
 - Custom data import capabilities
 - Automated data quality checks
 
-### 〰️ **Wavelet Decomposition** 
+###  **Wavelet Decomposition** 
 - MODWT-based analysis across multiple time scales
 - Robust handling of non-stationary financial data
 - Scale-specific analysis of market dynamics
 - Advanced variance decomposition
 
-### 📊 **Quantile Transfer Entropy**
+###  **Quantile Transfer Entropy**
 - Information flow measurement across quantiles
 - Tail-risk and extreme event analysis
 - Directional spillover detection
 - Bootstrap significance testing
 
-### 🕸️ **Network Analysis**
+###  **Network Analysis**
 - QTE-based network construction
 - Comprehensive network metrics
 - Community detection algorithms
 - Multi-scale network visualization
 
-### 🌊 **Financial Contagion**
+###  **Financial Contagion**
 - Crisis period identification
 - Cross-market correlation analysis
 - Dynamic contagion measurement
 - Regional spillover patterns
 
-### 📈 **Rich Visualizations**
+###  **Rich Visualizations**
 - Interactive network plots
 - Publication-ready heatmaps
 - Time-varying analysis charts
