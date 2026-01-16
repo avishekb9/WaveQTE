@@ -2,7 +2,6 @@
 ^\.gitignore$
 ^README\.md$
 ^CONTRIBUTING\.md$
-^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^doc$
